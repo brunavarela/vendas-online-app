@@ -1,9 +1,11 @@
 import {SafeAreaView, Text} from 'react-native';
+import styled from 'styled-components/native';
+
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text>Testanto</Text>
+      <Text>Testando</Text>
     </SafeAreaView>
   );
 };
