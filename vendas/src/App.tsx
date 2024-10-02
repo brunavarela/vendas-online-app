@@ -1,10 +1,17 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import Login from './modules/login';
-import styled from 'styled-components/native';
+import {SafeAreaView} from 'react-native';
+
+import { useState } from 'react';
+import Modal from './shared/components/modal/Modal';
+import Button from './shared/components/button/Button';
 
 const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <SafeAreaView>
+      <Modal visible={modalVisible} text='Texto teste' title='Titulo teste'/>
+      <Button title='open' onPress={() =>setModalVisible(true)}/>
       <Login />
     </SafeAreaView>
   );
