@@ -10,8 +10,6 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <Modal visible={modalVisible} text='Texto teste' title='Titulo teste'/>
-      <Button title='open' onPress={() =>setModalVisible(true)}/>
       <Login />
     </SafeAreaView>
   );
