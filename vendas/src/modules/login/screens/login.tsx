@@ -1,9 +1,8 @@
 import { View } from 'react-native';
-import { ContainerLogin } from '../styles/login.style';
+import { ContainerLogin, ImageLogo } from '../styles/login.style';
 import Input from '../../../shared/components/input/Input';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/themes/theme';
-import { Icon } from '../../../shared/components/icon/Icon';
 <script src="http://localhost:8097"></script>
 
 const Login = () => {
@@ -14,6 +13,7 @@ const Login = () => {
   return (
     <View>
       <ContainerLogin>
+        <ImageLogo resizeMode="contain" source={require('../../../assets/images/Abba.png')} />
         <Input margin='0px 0px 8px 0px' placeholder='Digite seu email' title='Email:'/>
         <Input secureTextEntry placeholder='Digite sua senha' title='Senha:'/>
         <Button 
