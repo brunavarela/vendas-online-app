@@ -21,7 +21,7 @@ const Login = () => {
           margin="16px" 
           title="ENTRAR" 
           onPress={handleOnPress}
-          />
+        />
       </ContainerLogin>
     </View>
   );

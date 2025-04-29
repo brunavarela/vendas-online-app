@@ -9,15 +9,15 @@ export const neutralTheme = {
 };
 
 export const mainTheme = {
-  primary: '#8C29B0',
+  primary: '#1C76A1',
 };
 
-export const purpleTheme = {
-  purple80: '#512C85'
+export const blueTheme = {
+  blue80: '#2D91AF'
 };
 
 export const pinkTheme = {
-  pink80: '#C833DB'
+  pink80: '#418DAF'
 };
 
 export const orangeTheme = {

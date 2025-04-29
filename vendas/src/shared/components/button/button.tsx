@@ -55,7 +55,7 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
     default:
       return (
         <ButtonContainer {...props} margin={margin} onPress={handleOnPress}>
-          <GradientButton start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}} colors={[theme.colors.purpleTheme.purple80, theme.colors.pinkTheme.pink80]}>
+          <GradientButton start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}} colors={[theme.colors.mainTheme.primary, theme.colors.pinkTheme.pink80]}>
           {renderText(theme.colors.neutralTheme.white)}
           </GradientButton>
         </ButtonContainer>
