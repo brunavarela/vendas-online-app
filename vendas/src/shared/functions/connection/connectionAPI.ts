@@ -3,7 +3,6 @@ import { MethodEnum } from "../../enums/methods.enum";
 
 export type MethodType = 'get' | 'delete' | 'post' | 'put' | 'patch' ; 
 
-
 export default class ConnectionAPI {
   static async call<T>(
     url: string, 
