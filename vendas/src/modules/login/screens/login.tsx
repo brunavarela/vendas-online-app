@@ -32,6 +32,7 @@ const Login = () => {
         />
         <Input 
           value={password}
+          errorMessage={errorMessage} 
           secureTextEntry 
           placeholder='Digite sua senha' 
           title='Senha:'
