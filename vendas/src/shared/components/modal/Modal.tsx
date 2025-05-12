@@ -33,9 +33,6 @@ const Modal = ({title, text, onCloseModal, ...props}: ModalProps) => {
         <Text>
           {text}
         </Text>
-        <Text>
-          {text}
-        </Text>
         <Button title='ok' onPress={onCloseModal} />
         <IconCloseModal onPress={onCloseModal} name="cross" size={12}/>
       </ContainerModal>
