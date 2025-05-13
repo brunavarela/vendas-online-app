@@ -1,6 +1,6 @@
 import { TextInputProps, View } from 'react-native';
 import { ContainerInput, IconEye } from './input.style';
-import { DisplayFlexColumn } from '../globalStyles/GlobalView.style';
+import { DisplayFlexColumn } from '../globalStyles/globalView.style';
 import Text from '../text/Text';
 import { textTypes } from '../text/textTypes';
 import { theme } from '../../themes/theme';
