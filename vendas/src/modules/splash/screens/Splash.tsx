@@ -6,6 +6,10 @@ import { MethodEnum } from "../../../enums/methods.enum";
 import { useUserReducer } from "../../../store/reducers/userReducer/useUserReducer";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { getAuthorizationToken } from "../../../shared/functions/connection/auth";
+import { UserType } from "../../../shared/types/userType";
+
+const TIME_SLEEP = 5000;
 
 const Splash = () => {
   const  { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -13,12 +17,32 @@ const Splash = () => {
   const { setUser } = useUserReducer();
 
   useEffect(() => {
+
+    const findUser = async (): Promise<undefined | UserType> => {
+      let returnUser = undefined;
+
+      // verificar se tenho o token antes de fazer requisição
+      const token = await getAuthorizationToken();
+
+      if(token) {
+        returnUser = await request<UserType>({
+          url: URL_USER,
+          method: MethodEnum.GET,
+          saveGlobal: setUser,
+        });
+      };
+
+      return returnUser;
+    } 
+
     const verifyLogin = async () => {
-      const returnUser = await request({
-        url: URL_USER,
-        method: MethodEnum.GET,
-        saveGlobal: setUser,
-      });
+
+      // O promise all vai executar em paralelo, 
+      // mas só vai terminar quando todos tiverem sido executados:
+      const [returnUser] = await Promise.all([
+        findUser(),
+        new Promise<void>((r: any) =>setTimeout(r, TIME_SLEEP)),
+      ]);
 
       if (returnUser) {
         reset ({
