@@ -7,6 +7,7 @@ import { ReturnLogin } from "../types/returnLogin";
 import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer";
 import { useGlobalReducer } from "../../store/reducers/globalReducer/useGlobalReducer";
 import { MenuUrl } from "../enums/MenuUrl.enum";
+import { setAuthorizationToken } from "../functions/connection/auth";
 
 export const useRequest = () => {
   const { reset }  = useNavigation<NavigationProp<ParamListBase>>();
@@ -19,6 +20,7 @@ export const useRequest = () => {
     setLoading(true);
     await ConnectionAPIPost<ReturnLogin>('http://10.0.2.2:3001/auth', body)
       .then((result) => {
+        setAuthorizationToken(result.accessToken);
         setUser(result.user);
         reset({
           index: 0,
