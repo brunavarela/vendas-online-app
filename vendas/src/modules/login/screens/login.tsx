@@ -4,10 +4,9 @@ import Input from '../../../shared/components/input/Input';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/themes/theme';
 import { useLogin } from '../hooks/useLogin';
-import { useNavigation } from '@react-navigation/native';
+
 
 const Login = () => {
-  const navigation = useNavigation();
   const {
     email,
     password,
