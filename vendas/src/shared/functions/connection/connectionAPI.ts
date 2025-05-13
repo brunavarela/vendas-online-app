@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MethodEnum } from "../../enums/methods.enum";
+import { MethodEnum } from "../../../enums/methods.enum";
 
 export type MethodType = 'get' | 'delete' | 'post' | 'put' | 'patch' ; 
 
