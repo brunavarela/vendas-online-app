@@ -1,5 +1,7 @@
+import { removeSpecialCharacters } from "./characters";
+
 export const insertMaskInPhone = (phone: string) => {
-    const noMask = phone.replace(/\D/g, '')
+    const noMask = removeSpecialCharacters(phone);
 
     return noMask
         .replace(/(\d{2})(\d)/, '($1) $2')
@@ -7,6 +9,6 @@ export const insertMaskInPhone = (phone: string) => {
 };
 
 export const validatePhone = (phone: string) => {
-    const noMask = phone.replace(/\D/g, '')
+    const noMask = removeSpecialCharacters(phone)
     return noMask.length === 11 || noMask.length === 10;
 };
