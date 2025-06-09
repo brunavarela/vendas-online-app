@@ -6,6 +6,8 @@ import { MethodEnum } from "../../../enums/methods.enum";
 import { URL_USER } from "../../../shared/constants/urls";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { insertMaskInCpf } from "../../../shared/functions/cpf";
+import { insertMaskInPhone } from "../../../shared/functions/phone";
 
 export const useCreateUser = () => {
     const { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -55,9 +57,23 @@ export const useCreateUser = () => {
         event: NativeSyntheticEvent<TextInputChangeEventData>, 
         name: string
     ) => {
+        let text = event.nativeEvent.text;
+        switch (name) {
+            case 'cpf':
+                text = insertMaskInCpf(text);
+                break;
+            case 'phone':
+                text = insertMaskInPhone(text);
+                break;
+        
+            default:
+                text = event.nativeEvent.text;
+                break;
+        };
+
         setCreateUser((currentCreateUser) => ({
             ...currentCreateUser,
-            [name]: event.nativeEvent.text
+            [name]: text,
         }));
     };
 
