@@ -1,9 +1,9 @@
 import Text from "../../../shared/components/text/Text"
 
-const Orders = () => {
+const Cart = () => {
     return (
-        <Text>Pedidos</Text>
+        <Text>Carrinho</Text>
     )
 }
 
-export default Orders;
+export default Cart;

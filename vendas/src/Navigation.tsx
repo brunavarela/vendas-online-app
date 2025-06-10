@@ -12,6 +12,7 @@ import { theme } from "./shared/themes/theme";
 import Orders from "./modules/orders";
 import Profile from "./modules/profile";
 import Product from "./modules/product";
+import Cart from "./modules/cart";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,12 +22,16 @@ const TabNavigation = () => {
     let iconName: string;
 
     switch (route.name) {
-      case 'Home':
+      case MenuUrl.HOME:
         iconName = 'home'
         break;
-      case 'Orders':
+      case MenuUrl.ORDERS:
+        iconName = 'books'
+        break;
+      case MenuUrl.CART:
         iconName = 'cart'
         break;
+      case MenuUrl.PROFILE:
       default:
         iconName = 'profile';
         break
@@ -50,7 +55,8 @@ const TabNavigation = () => {
       })}
     >
       <Tab.Screen name={MenuUrl.HOME} component={Home} options={{ headerShown: false }}/>
-      <Tab.Screen name={MenuUrl.ORDER} component={Orders} options={{ title: 'Pedidos', headerShown: false }} />
+      <Tab.Screen name={MenuUrl.CART} component={Cart} options={{ title: 'Carrinho', headerShown: false }}/>
+      <Tab.Screen name={MenuUrl.ORDERS} component={Orders} options={{ title: 'Pedidos', headerShown: false }} />
       <Tab.Screen name={MenuUrl.PROFILE} component={Profile} options={{ title: 'Perfil', headerShown: false }}/>
     </Tab.Navigator>
   );
