@@ -14,7 +14,7 @@ import { removeSpecialCharacters } from "../../../shared/functions/characters";
 export const useCreateUser = () => {
     const { reset } = useNavigation<NavigationProp<ParamListBase>>();
     const { request, loading } = useRequest();
-    const [disable, setDisable ] = useState<boolean>(true);
+    const [disabled, setDisabled ] = useState<boolean>(true);
     const [createUser, setCreateUser] = useState<CreateUserType>({
         name: '',
         phone: '',
@@ -33,9 +33,9 @@ export const useCreateUser = () => {
             createUser.password !== '' &&
             createUser.password === createUser.confirmPassword
         ) {
-            setDisable(false);
+            setDisabled(false);
         } else {
-            setDisable(true);
+            setDisabled(true);
         }
     }, [createUser]);
 
@@ -72,7 +72,7 @@ export const useCreateUser = () => {
     return {
         createUser,
         loading,
-        disable,
+        disabled,
         handleOnChangeInput,
         handleCreateUser
     };
