@@ -9,7 +9,7 @@ export const neutralTheme = {
 };
 
 export const mainTheme = {
-  primary: '#1C76A1',
+  primary: '#8518A8',
 };
 
 export const blueTheme = {
@@ -17,7 +17,7 @@ export const blueTheme = {
 };
 
 export const pinkTheme = {
-  pink80: '#418DAF'
+  pink80: '#A700FA'
 };
 
 export const orangeTheme = {
