@@ -11,6 +11,7 @@ import { Icon } from "./shared/components/icon/Icon";
 import { theme } from "./shared/themes/theme";
 import Orders from "./modules/orders";
 import Profile from "./modules/profile";
+import Product from "./modules/product";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -48,9 +49,9 @@ const TabNavigation = () => {
         }
       })}
     >
-      <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-      <Tab.Screen name="Orders" component={Orders} options={{ title: 'Pedidos', headerShown: false }} />
-      <Tab.Screen name="Settings" component={Profile} options={{ title: 'Perfil', headerShown: false }}/>
+      <Tab.Screen name={MenuUrl.HOME} component={Home} options={{ headerShown: false }}/>
+      <Tab.Screen name={MenuUrl.ORDER} component={Orders} options={{ title: 'Pedidos', headerShown: false }} />
+      <Tab.Screen name={MenuUrl.PROFILE} component={Profile} options={{ title: 'Perfil', headerShown: false }}/>
     </Tab.Navigator>
   );
 }
@@ -59,10 +60,30 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={MenuUrl.SPLASH} component={Splash} options={{ headerShown: false }}/>
-        <Stack.Screen name={MenuUrl.LOGIN} component={Login} options={{ headerShown: false }}/>
-        <Stack.Screen name={MenuUrl.CREATE_USER} component={CreateUser} options={{ title: 'Criar usuário' }}/>
-        <Stack.Screen name={MenuUrl.HOME} component={TabNavigation} options={{ headerShown: false }}/>
+        <Stack.Screen 
+          name={MenuUrl.SPLASH} 
+          component={Splash} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name={MenuUrl.LOGIN} 
+          component={Login} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name={MenuUrl.PRODUCT} 
+          component={Product} 
+        />
+        <Stack.Screen 
+          name={MenuUrl.CREATE_USER} 
+          component={CreateUser} 
+          options={{ title: 'Criar usuário' }}
+        />
+        <Stack.Screen 
+          name={MenuUrl.HOME} 
+          component={TabNavigation} 
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
