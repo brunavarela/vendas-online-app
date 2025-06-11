@@ -9,10 +9,10 @@ export const useProductReducer = () => {
 
     const setProducts = (currentProducts: ProductType[]) => {
         dispatch(setProductsAction(currentProducts));
-    }
+    };
 
     return {
         products,
         setProducts,
-    }
+    };
 }

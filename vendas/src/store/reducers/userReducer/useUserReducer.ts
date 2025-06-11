@@ -9,10 +9,10 @@ export const useUserReducer = () => {
 
   const setUser = (currentUser: UserType) => {
     dispatch(setUserAction(currentUser))
-  }
+  };
 
   return {
     user,
     setUser,
-  }
+  };
 }
