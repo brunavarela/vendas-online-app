@@ -1,5 +1,5 @@
 import Text from "../../../shared/components/text/Text"
-import { TouchableOpacity, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useProductReducer } from "../../../store/reducers/productReducer/useProductReducer";
 import { useEffect } from "react";
 import { useRequest } from "../../../shared/hooks/useRequest";
@@ -9,6 +9,7 @@ import { ProductType } from "../../../shared/types/productType";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { ProductNavigationProp } from "../../product/screens/Product";
 import { useNavigation } from "@react-navigation/native";
+import ProductThumbnail from "../../../shared/components/productThumbnail/ProductThumbnail";
 
 const Home = () => {
   const { navigate } = useNavigation<ProductNavigationProp>();
@@ -32,13 +33,13 @@ const Home = () => {
   return (
     <View>
       <Text>Home</Text>
-      {products.map((product) => (
-        <TouchableOpacity onPress={() => handleGoToProduct(product)}>
-          <Text>
-            {product.name}
-          </Text>
-        </TouchableOpacity>
-      ))}
+      <FlatList
+        horizontal
+        data={products}
+        renderItem={({ item }
+        ) => <ProductThumbnail product={item} margin="0px 8px"/>
+      }
+      />
     </View>
   )
 }
