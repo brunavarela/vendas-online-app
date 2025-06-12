@@ -6,7 +6,7 @@ import {
   View,
   TextInput
 } from 'react-native';
-import { ContainerInput, IconEye } from './input.style';
+import { ContainerInput, IconEye, IconSearch } from './input.style';
 import { DisplayFlexColumn } from '../globalStyles/globalView.style';
 import Text from '../text/Text';
 import { textTypes } from '../text/textTypes';
@@ -19,8 +19,10 @@ interface InputProps extends TextInputProps {
   errorMessage?: string;
   secureTextEntry?: boolean;
   margin?: string;
-  type: 'cel-phone' | 'cpf';
-}
+  type?: 'cel-phone' | 'cpf';
+  iconRight?: string;
+  onPressIconRight?: () => void;
+};
 
 const Input = forwardRef<TextInput, InputProps>(({
   margin,
@@ -29,6 +31,8 @@ const Input = forwardRef<TextInput, InputProps>(({
   errorMessage,
   onChange,
   type,
+  iconRight,
+  onPressIconRight,
   ...props
 }, ref) => {
   const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
@@ -88,6 +92,13 @@ const Input = forwardRef<TextInput, InputProps>(({
             size={20}
           />
         )}
+        {iconRight && 
+          <IconSearch
+            onPress={onPressIconRight}
+            name='search'
+            size={14}
+          />
+        }
       </View>
       {errorMessage && (
         <Text

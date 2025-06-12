@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 interface DisplayProps {
   customMargin?: string;
-}
+};
 
 export const DisplayFlexColumn = styled.View<DisplayProps>`
   display: flex;
@@ -11,3 +11,9 @@ export const DisplayFlexColumn = styled.View<DisplayProps>`
 
   margin: ${(props: any) => props.customMargin ? props.customMargin : '0px'};
 `;
+
+export const FlexBetweenRow = styled.View`
+  display: flex;
+  justify-content: space-between;
+`;
+
