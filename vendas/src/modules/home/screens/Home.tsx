@@ -9,12 +9,13 @@ import ProductThumbnail from "../../../shared/components/productThumbnail/Produc
 import Input from "../../../shared/components/input/Input";
 import { DisplayFlexColumn } from "../../../shared/components/globalStyles/globalView.style";
 import { HomeContainer } from "../styles/home.styles";
-import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { navigate } = useNavigation<SearchProductNavigationProp>();
   const { request } = useRequest();
   const { products, setProducts } = useProductReducer();
 
@@ -27,7 +28,9 @@ const Home = () => {
   }, []);
 
   const handleGoToProduct = () => {
-    navigate(MenuUrl.SEARCH_PRODUCT)
+    navigate(MenuUrl.SEARCH_PRODUCT, {
+      search,
+    })
   };
 
   const handleOnChangeSearch = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
