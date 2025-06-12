@@ -6,13 +6,9 @@ import { useRequest } from "../../../shared/hooks/useRequest";
 import { URL_PRODUCT } from "../../../shared/constants/urls";
 import { MethodEnum } from "../../../enums/methods.enum";
 import { ProductType } from "../../../shared/types/productType";
-import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
-import { ProductNavigationProp } from "../../product/screens/Product";
-import { useNavigation } from "@react-navigation/native";
 import ProductThumbnail from "../../../shared/components/productThumbnail/ProductThumbnail";
 
 const Home = () => {
-  const { navigate } = useNavigation<ProductNavigationProp>();
   const { request } = useRequest();
   const { products, setProducts } = useProductReducer();
 
@@ -23,12 +19,6 @@ const Home = () => {
         saveGlobal: setProducts,
       });
   }, []);
-
-  const handleGoToProduct = (product: ProductType) => {
-    navigate(MenuUrl.PRODUCT, {
-      product,
-    });
-  };
 
   return (
     <View>
