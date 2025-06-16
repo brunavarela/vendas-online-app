@@ -36,3 +36,7 @@ export const ButtonSecondary = styled(ButtonContainer)<ButtonContainerProps>`
 export const ButtonDisabled = styled(ButtonContainer)<ButtonContainerProps>`
   background-color: ${theme.colors.grayTheme.gray100};
 `;
+
+export const ActivityIndicatorButton = styled.ActivityIndicator`
+  margin-left: 8px;
+`;

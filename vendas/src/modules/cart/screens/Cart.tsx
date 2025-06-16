@@ -18,8 +18,6 @@ const Cart = () => {
         });
     },[]);
 
-    console.log('🛒 [CART_RENDER]', cart);
-
     return (
         <Text>Carrinho</Text>
     )
