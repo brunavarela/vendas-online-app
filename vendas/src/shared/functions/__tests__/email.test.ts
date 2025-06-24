@@ -1,6 +1,6 @@
 import { validateEmail } from "../email";
 
-describe('Email - validateEmail', () => {
+describe('Email', () => {
 
     it('should return false when email has no @ symbol', () => {
         expect(validateEmail('dfdf.com.br')).toEqual(false);
