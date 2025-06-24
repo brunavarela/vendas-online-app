@@ -4,7 +4,6 @@
 
 # Xcode
 #
-coverage
 build/
 *.pbxuser
 !default.pbxuser

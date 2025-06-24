@@ -14,8 +14,8 @@ export default class ConnectionAPI {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
-      }
-    }
+      },
+    };
 
     switch (method) {
       case MethodEnum.DELETE:
@@ -36,8 +36,8 @@ export default class ConnectionAPI {
         return (
           await axios[method]<T>(url, body, config)
         ).data;
-    }
-  }
+    };
+  };
 
   static async connect<T, B = unknown>(
     url: string, 
@@ -56,8 +56,8 @@ export default class ConnectionAPI {
       };
       throw new Error('Sem conexão com o backend');
     });
-  }
-}
+  };
+};
 
 export const ConnectionAPIGet = async <T>(url: string): Promise<T> => {
   return ConnectionAPI.connect(url, MethodEnum.GET);
