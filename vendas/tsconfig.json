@@ -1,8 +1,6 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "@types/styled-components-react-native"
-    ]
+    "types": ["jest", "@types/styled-components-react-native"]
   }
 }
