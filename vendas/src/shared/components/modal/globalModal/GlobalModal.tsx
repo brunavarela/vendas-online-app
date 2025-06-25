@@ -1,5 +1,6 @@
 import Modal from "../Modal";
 import { useGlobalReducer } from "../../../../store/reducers/globalReducer/useGlobalReducer";
+import { globalModalTestId } from "./__mocks__/globalModal.testid";
 
 export interface GlobalModalType {
   visible: boolean;
@@ -16,6 +17,7 @@ const GlobalModal = () => {
       text={modal.text} 
       visible={modal.visible} 
       onCloseModal={closeModal}
+      testID={globalModalTestId.GLOBAL_MODAL_CONTAINER}
     />
   )
 }
