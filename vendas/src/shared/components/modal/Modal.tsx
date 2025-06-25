@@ -4,6 +4,7 @@ import Text from '../text/Text';
 import { theme } from '../../themes/theme';
 import { textTypes } from '../text/textTypes';
 import Button from '../button/Button';
+import { modalTestId } from './__mocks__/modal.testid';
 
 interface ModalProps extends ModalPropsReact {
   title?: string;
@@ -17,24 +18,22 @@ const Modal = ({title, text, onCloseModal, ...props}: ModalProps) => {
     <ModalReact
       animationType="slide"
       transparent={true}
-      onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
-        onCloseModal();
-      }}
+      onRequestClose={onCloseModal}
       {...props}
     >
       <ContainerModal>
         <Text 
+          testID={modalTestId.MODAL_TITLE}
           type={textTypes.BUTTON_SEMIBOLD} 
           color={theme.colors.mainTheme.primary} 
         >
           {title}
         </Text>
-        <Text>
+        <Text testID={modalTestId.MODAL_TEXT}>
           {text}
         </Text>
-        <Button title='ok' onPress={onCloseModal} />
-        <IconCloseModal onPress={onCloseModal} name="cross" size={12}/>
+        <Button testID={modalTestId.MODAL_CLOSE_BUTTON} title='ok' onPress={onCloseModal} />
+        <IconCloseModal testID={modalTestId.MODAL_CLOSE_ICON} onPress={onCloseModal} name="cross" size={12}/>
       </ContainerModal>
     </ModalReact>
   )
