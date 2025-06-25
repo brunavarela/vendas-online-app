@@ -3,6 +3,7 @@ import {ActivityIndicatorButton, ButtonContainer, ButtonDisabled, ButtonSecondar
 import Text from '../text/Text';
 import {theme} from '../../themes/theme';
 import {textTypes} from '../text/textTypes'
+import { buttonTestId } from './__mocks__/button.testid';
 
 //Mesma coisa do input, ja tenho todos os tipos
 //padrão do component touchableOpacity, incluindo o onPress
@@ -27,7 +28,12 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
       <Text type={textTypes.BUTTON_SEMIBOLD} color={color}>
         {title}
       </Text>
-      {loading && <ActivityIndicatorButton color={theme.colors.neutralTheme.white} />}
+      {loading && (
+        <ActivityIndicatorButton 
+          testID={buttonTestId.BUTTON_LOADING} 
+          color={theme.colors.neutralTheme.white} 
+        />
+      )}
     </>
   );
 
@@ -50,8 +56,11 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
     default:
       return (
         <ButtonContainer {...props} margin={margin} onPress={handleOnPress}>
-          <GradientButton start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}} colors={[theme.colors.mainTheme.primary, theme.colors.pinkTheme.pink80]}>
-          {renderText(theme.colors.neutralTheme.white)}
+          <GradientButton 
+            start={{x: 0.0, y: 0.0}} 
+            end={{x: 1.0, y: 1.0}} 
+            colors={[theme.colors.mainTheme.primary, theme.colors.pinkTheme.pink80]}>
+              {renderText(theme.colors.neutralTheme.white)}
           </GradientButton>
         </ButtonContainer>
       );
