@@ -32,6 +32,5 @@ describe('Cart Reducer', () => {
         });
 
         expect(mockDispatch).toHaveBeenCalled();
-
     });
 })
