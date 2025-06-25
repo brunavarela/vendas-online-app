@@ -10,6 +10,7 @@ import { View as MockView } from 'react-native';
 // Importa o tipo ReactNode pra tipar corretamente o mock do LinearGradient
 import { ReactNode } from 'react';
 import { buttonTestId } from '../__mocks__/button.testid';
+import { theme } from '../../../themes/theme';
 
 // Mock do react-native-linear-gradient
 // Substitui o componente pelo View básico, ignorando o estilo de gradiente 
@@ -23,6 +24,8 @@ jest.mock('react-native-linear-gradient', () => {
 // Cria uma função mockada que simula o comportamento do onPress do botão
 const mockOnPress = jest.fn();
 
+const mockTitle = 'mockTitle';
+
 // Início da suíte de testes do componente <Button />
 describe('Button', () => {
 
@@ -30,8 +33,7 @@ describe('Button', () => {
   beforeEach(() => {
     render(
       <Button 
-        title='Test' 
-        testID={buttonTestId.BUTTON_TEST_ID} 
+        title={mockTitle}
         onPress={mockOnPress} 
       />
     );
@@ -40,16 +42,34 @@ describe('Button', () => {
   // Primeiro teste: verifica se o botão foi renderizado com sucesso
   it('should render button success', () => {
     // Pega o botão pelo testID
-    const button = screen.getByTestId(buttonTestId.BUTTON_TEST_ID);
+    const button = screen.getByTestId(buttonTestId.BUTTON_DEFAULT);
 
     // Verifica se ele está definido (ou seja, existe na árvore de render)
     expect(button).toBeDefined();
   });
 
-  // Segundo teste: verifica se o onPress foi chamado ao clicar no botão
+  it('should render title', () => {
+    render(
+      <Button 
+        title={mockTitle}
+        onPress={mockOnPress} 
+      />
+    );
+    const title = screen.getByTestId(buttonTestId.BUTTON_TITLE)
+
+    expect(title).toBeDefined();
+  });
+
+  it('should render title by text', () => {
+    const title = screen.getByText(mockTitle)
+
+    expect(title).toBeDefined();
+  });
+
+  // Terceiro teste: verifica se o onPress foi chamado ao clicar no botão
   it('should call onPress', () => {
     // Seleciona o botão pelo testID
-    const button = screen.getByTestId(buttonTestId.BUTTON_TEST_ID);
+    const button = screen.getByTestId(buttonTestId.BUTTON_DEFAULT);
 
     // Dispara o evento de clique (simula o usuário apertando)
     fireEvent.press(button);
@@ -67,9 +87,9 @@ describe('Button', () => {
   it('should render loading', () => {
     render(
       <Button 
-        title='Test' 
-        testID={buttonTestId.BUTTON_TEST_ID} 
+        title={mockTitle}
         onPress={mockOnPress} 
+        type={theme.buttons.buttonsTheme.primary}
         loading
       />
     );
@@ -77,5 +97,31 @@ describe('Button', () => {
     const loading = screen.queryAllByTestId(buttonTestId.BUTTON_LOADING);
 
     expect(loading.length).toEqual(1);
+  });
+
+  it('should render secondary button', () => {
+    render(
+      <Button 
+        title={mockTitle}
+        type={theme.buttons.buttonsTheme.secondary}
+        onPress={mockOnPress} 
+      />
+    );
+    const button = screen.getByTestId(buttonTestId.BUTTON_SECONDARY)
+
+    expect(button).toBeDefined();
+  });
+
+  it('should render disabled button', () => {
+    render(
+      <Button 
+        title={mockTitle}
+        disabled
+        onPress={mockOnPress} 
+      />
+    );
+    const button = screen.getByTestId(buttonTestId.BUTTON_DISABLED)
+
+    expect(button).toBeDefined();
   });
 });

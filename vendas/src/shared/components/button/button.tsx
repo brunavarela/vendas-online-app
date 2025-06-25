@@ -16,7 +16,15 @@ interface ButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
 }
 
-const Button = ({title, type, margin, loading, onPress, disabled, ...props}: ButtonProps) => {
+const Button = ({
+    title, 
+    type, 
+    margin, 
+    loading, 
+    onPress, 
+    disabled, 
+    ...props
+  }: ButtonProps) => {
   const handleOnPress = () => {
     if (!loading && !disabled && onPress) {
       onPress();
@@ -25,8 +33,11 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
 
   const renderText = (color: string) => (
     <>
-      <Text type={textTypes.BUTTON_SEMIBOLD} color={color}>
-        {title}
+      <Text 
+        testID={buttonTestId.BUTTON_TITLE} 
+        type={textTypes.BUTTON_SEMIBOLD} 
+        color={color}>
+          {title}
       </Text>
       {loading && (
         <ActivityIndicatorButton 
@@ -39,7 +50,7 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
 
   if (disabled) {
     return ( 
-      <ButtonDisabled {...props} margin={margin} >
+      <ButtonDisabled testID={buttonTestId.BUTTON_DISABLED}  {...props} margin={margin} >
         {renderText(theme.colors.neutralTheme.white)}
       </ButtonDisabled> 
     )
@@ -48,20 +59,28 @@ const Button = ({title, type, margin, loading, onPress, disabled, ...props}: But
   switch (type) {
     case theme.buttons.buttonsTheme.secondary:
       return (
-        <ButtonSecondary {...props} margin={margin} onPress={handleOnPress}>
-          {renderText(theme.colors.mainTheme.primary)}
+        <ButtonSecondary 
+          testID={buttonTestId.BUTTON_SECONDARY} 
+          {...props} 
+          margin={margin} 
+          onPress={handleOnPress}>
+            {renderText(theme.colors.mainTheme.primary)}
         </ButtonSecondary>
       );
     case theme.buttons.buttonsTheme.primary:
     default:
       return (
-        <ButtonContainer {...props} margin={margin} onPress={handleOnPress}>
-          <GradientButton 
-            start={{x: 0.0, y: 0.0}} 
-            end={{x: 1.0, y: 1.0}} 
-            colors={[theme.colors.mainTheme.primary, theme.colors.pinkTheme.pink80]}>
-              {renderText(theme.colors.neutralTheme.white)}
-          </GradientButton>
+        <ButtonContainer 
+          testID={buttonTestId.BUTTON_DEFAULT}  
+          {...props} 
+          margin={margin} 
+          onPress={handleOnPress}>
+            <GradientButton 
+              start={{x: 0.0, y: 0.0}} 
+              end={{x: 1.0, y: 1.0}} 
+              colors={[theme.colors.mainTheme.primary, theme.colors.pinkTheme.pink80]}>
+                {renderText(theme.colors.neutralTheme.white)}
+            </GradientButton>
         </ButtonContainer>
       );
   }
