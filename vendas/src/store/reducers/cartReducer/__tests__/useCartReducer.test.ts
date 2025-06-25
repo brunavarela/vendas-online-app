@@ -20,13 +20,13 @@ jest.mock('../../../hooks', () => ({
 }));
 
 describe('Cart Reducer', () => {
-    const { result } = renderHook(() => useCartReducer());
-
     it('should return cart', () => {
+        const { result } = renderHook(() => useCartReducer());
         expect(result.current.cart).toEqual(mockCart);
     });
 
     it('should run setCart', () => {
+        const { result } = renderHook(() => useCartReducer());
         act(() => {
             result.current.setCart(mockCart)
         });
