@@ -16,4 +16,3 @@ Tecnologias Utilizadas
 React Native: Framework para o desenvolvimento de aplicativos móveis multiplataforma.
 Redux: Gerenciamento de estado para manter a consistência dos dados em toda a aplicação.
 React Navigation: Navegação entre telas do aplicativo de forma intuitiva.
-Firebase: Utilizado para autenticação de usuários e armazenamento de dados em tempo real.
