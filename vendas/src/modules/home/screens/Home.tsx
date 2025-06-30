@@ -8,7 +8,7 @@ import { ProductType } from "../../../shared/types/productType";
 import ProductThumbnail from "../../../shared/components/productThumbnail/ProductThumbnail";
 import Input from "../../../shared/components/input/Input";
 import { DisplayFlexColumn } from "../../../shared/components/globalStyles/globalView.style";
-import { HomeContainer } from "../styles/home.styles";
+import { HeaderContainer, HeaderLogo, HomeContainer } from "../styles/home.styles";
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
@@ -39,6 +39,11 @@ const Home = () => {
 
   return (
     <View>
+      <HeaderContainer>
+        <HeaderLogo 
+          resizeMode="contain" 
+          source={require('../../../assets/images/Las_Chicas.png')} />
+      </HeaderContainer>
       <HomeContainer>
         <Input 
           onPressIconRight={handleGoToProduct} 
