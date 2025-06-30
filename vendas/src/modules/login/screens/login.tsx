@@ -25,7 +25,7 @@ const Login = () => {
       <ContainerLogin>
         <ImageLogo 
           resizeMode="contain" 
-          source={require('../../../assets/images/Abba.png')} />
+          source={require('../../../assets/images/Las_Chicas.png')} />
         <Input 
           value={email}
           errorMessage={errorMessage} 

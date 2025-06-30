@@ -64,7 +64,7 @@ const Splash = () => {
     <ContainerSplash>
       <ImageLogoSplash 
         resizeMode="contain" 
-        source={require('../../../assets/images/Abba.png')} 
+        source={require('../../../assets/images/Las_Chicas.png')} 
       />
     </ContainerSplash>
   )
