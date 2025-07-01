@@ -1,17 +1,17 @@
-import { FlatList, NativeSyntheticEvent, TextInputChangeEventData, View } from "react-native";
+import { NativeSyntheticEvent, ScrollView, TextInputChangeEventData, View } from "react-native";
 import { useProductReducer } from "../../../store/reducers/productReducer/useProductReducer";
 import { useEffect, useState } from "react";
 import { useRequest } from "../../../shared/hooks/useRequest";
 import { URL_PRODUCT } from "../../../shared/constants/urls";
 import { MethodEnum } from "../../../enums/methods.enum";
 import { ProductType } from "../../../shared/types/productType";
-import ProductThumbnail from "../../../shared/components/productThumbnail/ProductThumbnail";
 import Input from "../../../shared/components/input/Input";
 import { DisplayFlexColumn } from "../../../shared/components/globalStyles/globalView.style";
-import { HeaderContainer, HeaderLogo, HomeContainer } from "../styles/home.styles";
+import { CategoryProductsScrollView, HeaderContainer, HeaderLogo, HomeContainer, SearchContainer } from "../styles/home.styles";
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
+import Spot_categories from "../../../shared/components/spot_categories/Sport_categories";
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
@@ -38,31 +38,31 @@ const Home = () => {
   }
 
   return (
-    <View>
+    <HomeContainer>
       <HeaderContainer>
         <HeaderLogo 
           resizeMode="contain" 
           source={require('../../../assets/images/Las_Chicas.png')} />
       </HeaderContainer>
-      <HomeContainer>
+      <SearchContainer>
         <Input 
           onPressIconRight={handleGoToProduct} 
           value={search} 
           onChange={handleOnChangeSearch} 
           iconRight="search" 
         />
-      </HomeContainer>
+      </SearchContainer>
 
       <DisplayFlexColumn />
-
-      <FlatList
-        horizontal
-        data={products}
-        renderItem={({ item }
-        ) => <ProductThumbnail product={item} margin="0px 8px"/>
-      }
-      />
-    </View>
+      
+      <ScrollView>
+        <CategoryProductsScrollView>
+          <Spot_categories title="Sapatos" categoryId="2"/>
+          <Spot_categories title="Bolsas" categoryId="3"/>
+          <Spot_categories title="Acessórios" categoryId="4"/>
+        </CategoryProductsScrollView>
+      </ScrollView>
+    </HomeContainer>
   )
 }
 
