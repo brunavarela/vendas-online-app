@@ -1,8 +1,8 @@
-import { NativeSyntheticEvent, ScrollView, TextInputChangeEventData, View } from "react-native";
+import { NativeSyntheticEvent, ScrollView, TextInputChangeEventData, TouchableOpacity, View } from "react-native";
 import { useProductReducer } from "../../../store/reducers/productReducer/useProductReducer";
 import { useEffect, useState } from "react";
 import { useRequest } from "../../../shared/hooks/useRequest";
-import { URL_PRODUCT } from "../../../shared/constants/urls";
+import { URL_CATEGORY, URL_PRODUCT } from "../../../shared/constants/urls";
 import { MethodEnum } from "../../../enums/methods.enum";
 import { ProductType } from "../../../shared/types/productType";
 import Input from "../../../shared/components/input/Input";
@@ -11,21 +11,28 @@ import { CategoryProductsScrollView, HeaderContainer, HeaderLogo, HomeContainer,
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
-import Spot_categories from "../../../shared/components/spot_categories/Sport_categories";
+import Spot_categories from "../../../shared/components/spot_categories/Spot_categories";
+import { Icon } from "../../../shared/components/icon/Icon";
+import HeaderModal from "../../../shared/components/modal/HeaderModal";
+import { CategoryTypes } from "../../../shared/components/spot_categories/categoryTypes";
+import { theme } from "../../../shared/themes/theme";
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
   const { navigate } = useNavigation<SearchProductNavigationProp>();
+  const [showHeaderModal, setShowHeaderModal] = useState(false);
+  const [categories, setCategories] = useState<CategoryTypes[]>([]);
   const { request } = useRequest();
-  const { products, setProducts } = useProductReducer();
 
-    useEffect(() => {
-      request<ProductType[]>({
-        url: URL_PRODUCT,
-        method: MethodEnum.GET,
-        saveGlobal: setProducts,
-      });
+  useEffect(() => {
+    request<CategoryTypes[]>({
+      url: URL_CATEGORY,
+      method: MethodEnum.GET,
+      saveGlobal: (res) => setCategories(res),
+    });
   }, []);
+
+
 
   const handleGoToProduct = () => {
     navigate(MenuUrl.SEARCH_PRODUCT, {
@@ -42,8 +49,13 @@ const Home = () => {
       <HeaderContainer>
         <HeaderLogo 
           resizeMode="contain" 
-          source={require('../../../assets/images/Las_Chicas.png')} />
+          source={require('../../../assets/images/Las_Chicas.png')} 
+        />
+        <TouchableOpacity onPress={() => setShowHeaderModal(true)}>
+          <Icon name="menu" size={28} color={theme.colors.mainTheme.primary} />
+        </TouchableOpacity>
       </HeaderContainer>
+
       <SearchContainer>
         <Input 
           onPressIconRight={handleGoToProduct} 
@@ -55,13 +67,28 @@ const Home = () => {
 
       <DisplayFlexColumn />
       
-      <ScrollView>
-        <CategoryProductsScrollView>
-          <Spot_categories title="Sapatos" categoryId="2"/>
-          <Spot_categories title="Bolsas" categoryId="3"/>
-          <Spot_categories title="Acessórios" categoryId="4"/>
-        </CategoryProductsScrollView>
-      </ScrollView>
+      <CategoryProductsScrollView>
+          {categories.map((category) => (
+            <Spot_categories
+              key={category.id}
+              title={category.name}
+              categoryId={category.id.toString()}
+            />
+          ))}
+      </CategoryProductsScrollView>
+
+      <HeaderModal
+        visible={showHeaderModal}
+        onClose={() => setShowHeaderModal(false)}
+        categories={categories.map(cat => ({
+          id: cat.id.toString(),
+          name: cat.name,
+        }))}
+        onSelect={(id) => {
+          console.log('Categoria selecionada', id);
+        }}
+      />
+
     </HomeContainer>
   )
 }

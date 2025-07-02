@@ -6,6 +6,10 @@ export const HomeContainer = styled.View`
 `;
 
 export const HeaderContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
     align-items: center;
     background-color: ${theme.colors.neutralTheme.white};
 `;
@@ -17,10 +21,9 @@ export const HeaderLogo = styled.Image `
 `
 
 export const SearchContainer = styled.View`
-    padding: 8px;
+    padding: 8px 16px;
 `;
 
-
 export const CategoryProductsScrollView = styled.ScrollView`
-    padding: 8px;
+    padding: 0 8px;
 `;
