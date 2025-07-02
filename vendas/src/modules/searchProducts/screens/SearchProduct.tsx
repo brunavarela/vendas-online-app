@@ -75,7 +75,7 @@ const SearchProduct = () => {
                 <ScrollView onScroll={handleScroll}>
                     <SearchProductScrollView>
                         {searchProducts.data.map((product) => (
-                            <ProductThumbnail margin="4px 0px" product={product} />
+                            <ProductThumbnail key={product.id} margin="4px 0px" product={product} />
                         ))}
                     </SearchProductScrollView>
                 </ScrollView>

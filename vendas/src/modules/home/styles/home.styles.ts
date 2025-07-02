@@ -20,7 +20,6 @@ export const SearchContainer = styled.View`
     padding: 8px;
 `;
 
-
 export const CategoryProductsScrollView = styled.ScrollView`
-    padding: 8px;
+    padding: 0 8px;
 `;

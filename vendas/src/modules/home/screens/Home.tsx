@@ -11,21 +11,11 @@ import { CategoryProductsScrollView, HeaderContainer, HeaderLogo, HomeContainer,
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
-import Spot_categories from "../../../shared/components/spot_categories/Sport_categories";
+import Spot_categories from "../../../shared/components/spot_categories/Spot_categories";
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
   const { navigate } = useNavigation<SearchProductNavigationProp>();
-  const { request } = useRequest();
-  const { products, setProducts } = useProductReducer();
-
-    useEffect(() => {
-      request<ProductType[]>({
-        url: URL_PRODUCT,
-        method: MethodEnum.GET,
-        saveGlobal: setProducts,
-      });
-  }, []);
 
   const handleGoToProduct = () => {
     navigate(MenuUrl.SEARCH_PRODUCT, {
@@ -44,6 +34,7 @@ const Home = () => {
           resizeMode="contain" 
           source={require('../../../assets/images/Las_Chicas.png')} />
       </HeaderContainer>
+
       <SearchContainer>
         <Input 
           onPressIconRight={handleGoToProduct} 
@@ -55,13 +46,12 @@ const Home = () => {
 
       <DisplayFlexColumn />
       
-      <ScrollView>
-        <CategoryProductsScrollView>
+      <CategoryProductsScrollView>
           <Spot_categories title="Sapatos" categoryId="2"/>
           <Spot_categories title="Bolsas" categoryId="3"/>
           <Spot_categories title="Acessórios" categoryId="4"/>
-        </CategoryProductsScrollView>
-      </ScrollView>
+          <Spot_categories title="Coleção" categoryId="1"/>
+      </CategoryProductsScrollView>
     </HomeContainer>
   )
 }
