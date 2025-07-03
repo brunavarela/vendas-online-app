@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react-native';
-import Modal from '../Modal';
+import Modal from '../generalModal/Modal';
 import { modalTestId } from '../__mocks__/modal.testid';
 import { View as MockView } from 'react-native';
 import { ReactNode } from 'react';

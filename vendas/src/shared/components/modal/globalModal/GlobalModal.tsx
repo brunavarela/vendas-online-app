@@ -1,4 +1,4 @@
-import Modal from "../Modal";
+import Modal from "../generalModal/Modal";
 import { useGlobalReducer } from "../../../../store/reducers/globalReducer/useGlobalReducer";
 import { globalModalTestId } from "./__mocks__/globalModal.testid";
 

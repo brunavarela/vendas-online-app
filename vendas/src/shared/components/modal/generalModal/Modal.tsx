@@ -1,10 +1,10 @@
-import {Alert, ModalProps as ModalPropsReact, Modal as ModalReact} from 'react-native';
+import { ModalProps as ModalPropsReact, Modal as ModalReact} from 'react-native';
 import { ContainerModal, IconCloseModal } from './modal.style';
-import Text from '../text/Text';
-import { theme } from '../../themes/theme';
-import { textTypes } from '../text/textTypes';
-import Button from '../button/Button';
-import { modalTestId } from './__mocks__/modal.testid';
+import Text from '../../text/Text';
+import { theme } from '../../../themes/theme';
+import { textTypes } from '../../text/textTypes';
+import Button from '../../button/Button';
+import { modalTestId } from '../__mocks__/modal.testid';
 
 interface ModalProps extends ModalPropsReact {
   title?: string;
