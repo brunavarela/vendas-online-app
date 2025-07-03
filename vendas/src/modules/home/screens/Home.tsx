@@ -14,6 +14,7 @@ import { Icon } from "../../../shared/components/icon/Icon";
 import { CategoryTypes } from "../../../shared/components/spot_categories/categoryTypes";
 import { theme } from "../../../shared/themes/theme";
 import MenuModal from "../../../shared/components/modal/menuModal/MenuModal";
+import { IconCloseModal } from "../../../shared/components/modal/generalModal/modal.style";
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
@@ -47,9 +48,11 @@ const Home = () => {
           resizeMode="contain" 
           source={require('../../../assets/images/Las_Chicas.png')} 
         />
-        <TouchableOpacity onPress={() => setShowMenuModal(true)}>
-          <Icon name="menu" size={28} color={theme.colors.mainTheme.primary} />
-        </TouchableOpacity>
+        {!showMenuModal && (
+          <TouchableOpacity onPress={() => setShowMenuModal(true)}>
+            <Icon name="menu" size={28} color={theme.colors.mainTheme.primary} />
+          </TouchableOpacity>
+        )}
       </HeaderContainer>
 
       <SearchContainer>
@@ -60,7 +63,6 @@ const Home = () => {
           iconRight="search" 
         />
       </SearchContainer>
-
       <DisplayFlexColumn />
       
       <CategoryProductsScrollView>

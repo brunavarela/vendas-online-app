@@ -1,8 +1,9 @@
-import { FlatList, Modal as MenuModalReact, Pressable } from "react-native"
+import { FlatList, Modal as MenuModalReact, Pressable, TouchableOpacity } from "react-native"
 import Text from "../../text/Text";
 import { textTypes } from "../../text/textTypes";
-import { ContainerMenuModal } from "./menuModal.style";
+import { ContainerMenuModal, ListContent, ViewCloseMenuModal } from "./menuModal.style";
 import { IconCloseModal } from "../generalModal/modal.style";
+import { theme } from "../../../themes/theme";
 
 interface MenuModalProps {
     visible: boolean;
@@ -30,12 +31,16 @@ const MenuModal = ({ visible, onCloseMenuModal, categories, onSelect }: MenuModa
                                 onCloseMenuModal();
                             }}
                         >
-                            <Text type={textTypes.PARAGRAPH_SEMIBOLD}>{item.name}</Text>
+                            <ListContent>
+                                <Text type={textTypes.PARAGRAPH_SEMIBOLD}>{item.name}</Text>
+                            </ListContent>
                         </Pressable>
                     )}
                 />
             </ContainerMenuModal>
-            <IconCloseModal onPress={onCloseMenuModal} name="cross" size={12}/>
+            <ViewCloseMenuModal>
+                <IconCloseModal color={theme.colors.mainTheme.primary} onPress={onCloseMenuModal} name="cross" size={16}/>
+            </ViewCloseMenuModal>
         </MenuModalReact>
     );
 };

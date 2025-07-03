@@ -2,6 +2,9 @@ import styled from "styled-components/native";
 import { Icon } from "../../icon/Icon";
 import { theme } from "../../../themes/theme";
 
+interface IconProps {
+  color?: string;
+}
 
 export const ContainerModal = styled.View`
   position: absolute;
@@ -27,9 +30,10 @@ export const ContainerModal = styled.View`
 
 `
 
-export const IconCloseModal = styled(Icon) `
+export const IconCloseModal = styled(Icon)<IconProps> `
   position: absolute;
   right: 24px;
   top: 24px;
   z-index: 10;
+  ${(props: {color: any}) => (props.color ? `color: ${props.color};` : '')};
 `
