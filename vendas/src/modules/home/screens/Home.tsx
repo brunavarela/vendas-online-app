@@ -1,4 +1,4 @@
-import { NativeSyntheticEvent, ScrollView, TextInputChangeEventData, TouchableOpacity, View } from "react-native";
+import { NativeSyntheticEvent, TextInputChangeEventData, TouchableOpacity } from "react-native";
 import { useEffect, useState } from "react";
 import { useRequest } from "../../../shared/hooks/useRequest";
 import { URL_CATEGORY } from "../../../shared/constants/urls";
@@ -8,23 +8,25 @@ import { DisplayFlexColumn } from "../../../shared/components/globalStyles/globa
 import { CategoryProductsScrollView, HeaderContainer, HeaderLogo, HomeContainer, SearchContainer } from "../styles/home.styles";
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
-import { SearchProductNavigationProp } from "../../searchProducts/screens/SearchProduct";
 import Spot_categories from "../../../shared/components/spot_categories/Spot_categories";
 import { Icon } from "../../../shared/components/icon/Icon";
-import { CategoryTypes } from "../../../shared/components/spot_categories/categoryTypes";
+import { CategoryType } from "../../../shared/types/categoryTypes";
 import { theme } from "../../../shared/themes/theme";
 import MenuModal from "../../../shared/components/modal/menuModal/MenuModal";
-import { IconCloseModal } from "../../../shared/components/modal/generalModal/modal.style";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../../shared/types/navigation";
+
+type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Home = () => {
   const [search, setSearch] = useState<string>('');
-  const { navigate } = useNavigation<SearchProductNavigationProp>();
+  const { navigate } = useNavigation<HomeNavigationProp>();
   const [showMenuModal, setShowMenuModal] = useState(false);
-  const [categories, setCategories] = useState<CategoryTypes[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
   const { request } = useRequest();
 
   useEffect(() => {
-    request<CategoryTypes[]>({
+    request<CategoryType[]>({
       url: URL_CATEGORY,
       method: MethodEnum.GET,
       saveGlobal: (res) => setCategories(res),
@@ -69,7 +71,7 @@ const Home = () => {
           {categories.map((category) => (
             <Spot_categories
               key={category.id}
-              title={category.name}
+              categoryName={category.name}
               categoryId={category.id.toString()}
             />
           ))}
@@ -83,7 +85,16 @@ const Home = () => {
           name: cat.name,
         }))}
         onSelect={(id) => {
-          console.log('Categoria selecionada', id);
+          const selectedCategory = categories.find(cat => cat.id.toString() === id);
+          if (selectedCategory) {
+            navigate(MenuUrl.CATEGORY, {
+              category: {
+                id: selectedCategory.id, 
+                name: selectedCategory.name,
+                products: selectedCategory.products || [],
+              },
+            });
+          }
         }}
       />
 

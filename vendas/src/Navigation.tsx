@@ -14,6 +14,7 @@ import Profile from "./modules/profile";
 import Product from "./modules/product";
 import Cart from "./modules/cart";
 import SearchProduct from "./modules/searchProducts";
+import Category from "./modules/category";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -84,6 +85,10 @@ const Navigation = () => {
         <Stack.Screen 
           name={MenuUrl.PRODUCT} 
           component={Product} 
+        />
+        <Stack.Screen 
+          name={MenuUrl.CATEGORY} 
+          component={Category} 
         />
         <Stack.Screen 
           name={MenuUrl.CREATE_USER} 
