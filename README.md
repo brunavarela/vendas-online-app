@@ -1,18 +1,79 @@
-# vendas-online-app
 
-Aplicativo de Vendas em React Native
-Este é um aplicativo de vendas desenvolvido utilizando React Native. Ele oferece uma plataforma simples e intuitiva para que os usuários possam navegar pelos produtos disponíveis e realizar compras de forma conveniente.
+🛍️ Vendas Online App
 
-Funcionalidades Principais
-Catálogo de Produtos: Os usuários podem visualizar uma lista de produtos disponíveis para compra, incluindo imagens, descrições e preços.
+Aplicativo mobile de vendas desenvolvido em React Native, oferecendo uma experiência fluida, intuitiva e moderna para usuários navegarem, pesquisarem e comprarem produtos.
 
-Pesquisa de Produtos: Os usuários podem buscar por produtos específicos utilizando a função de pesquisa.
+🚀 Visão Geral
 
-Carrinho de Compras: Os usuários podem adicionar produtos ao carrinho de compras e revisar os itens selecionados antes de finalizar a compra.
+O Vendas Online App é uma solução mobile para e-commerce, voltado para facilitar o processo de compra via smartphone. Totalmente construído com tecnologias modernas, ele oferece uma interface amigável, funcionalidades essenciais e integração com um backend próprio (não incluso neste repositório).
 
-Finalização de Compra: Após revisar os itens no carrinho, os usuários podem proceder para o checkout e fornecer as informações necessárias para concluir a compra.
+✨ Funcionalidades
 
-Tecnologias Utilizadas
-React Native: Framework para o desenvolvimento de aplicativos móveis multiplataforma.
-Redux: Gerenciamento de estado para manter a consistência dos dados em toda a aplicação.
-React Navigation: Navegação entre telas do aplicativo de forma intuitiva.
+🛒 Catálogo de Produtos
+
+Exibe uma lista de produtos com imagem, nome, descrição e preço.
+
+🔍 Busca de Produtos
+
+Permite pesquisar por produtos através de palavras-chave.
+
+📦 Carrinho de Compras
+
+Adiciona e remove itens do carrinho com atualização automática.
+
+💳 Checkout
+
+Permite o usuário revisar o pedido e concluir a compra com seus dados.
+
+⚠️ Este repositório contém apenas o front-end da aplicação. Aqui está o repositório do backend: https://github.com/brunavarela/vendas-online-backend
+
+🧰 Tecnologias Utilizadas
+React Native
+
+Redux Toolkit
+
+React Navigation
+
+Styled Components
+
+Axios
+
+TypeScript
+
+# Clone o repositório
+git clone https://github.com/brunavarela/vendas-online-app.git
+
+# Acesse a pasta do projeto
+cd vendas
+
+# Instale as dependências
+npm install
+# ou
+yarn install
+
+📱 Executando no Android
+
+npm run android
+
+📱 Executando no iOS
+
+
+npm run ios
+
+Recomendado usar o React Native CLI e ter o ambiente configurado para Android ou iOS.
+
+🧪 Testes
+
+npm run test
+
+npm run test:cov
+
+⚙️ Requisitos
+Node.js 18+
+
+Android Studio ou Xcode configurado
+
+React Native CLI configurado
+
+
+Desenvolvido por Bruna Varela
