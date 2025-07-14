@@ -25,7 +25,7 @@ Adiciona e remove itens do carrinho com atualização automática.
 
 Permite o usuário revisar o pedido e concluir a compra com seus dados.
 
-⚠️ Este repositório contém apenas o front-end da aplicação. O back-end está em outro repositório.
+⚠️ Este repositório contém apenas o front-end da aplicação. Aqui está o repositório do backend: https://github.com/brunavarela/vendas-online-backend
 
 🧰 Tecnologias Utilizadas
 React Native
