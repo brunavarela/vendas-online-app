@@ -5,13 +5,13 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type ProductNavigationProp = NativeStackNavigationProp<Record<string, ProductParams>>;
 
-export interface  ProductParams {
+export interface ProductParams {
     product: ProductType;
 }
 
 export const Product = () => {
     const { params } = useRoute<RouteProp<Record<string,ProductParams>>>();
-    const { product } = params;;
+    const { product } = params;
 
     return (
         <Text>{product.name}</Text>
